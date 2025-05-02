@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	comentarylibs "github.com/jSierraB3991/comentary_system/domain/comentary_libs"
 	comentaryrequest "github.com/jSierraB3991/comentary_system/infrastructure/comentary_request"
 	comentaryresponse "github.com/jSierraB3991/comentary_system/infrastructure/comentary_response"
 
@@ -16,10 +15,10 @@ type PerspectiveService struct {
 	PerspectiveUrl    string
 }
 
-func NewPerspectiveService(env *comentarylibs.Enviroment) *PerspectiveService {
+func NewPerspectiveService(perspectiveApiKey, urlBasePerspective string) *PerspectiveService {
 	return &PerspectiveService{
-		PerspectiveAPIKey: env.PerspectiveAPIKey,
-		PerspectiveUrl:    env.UrlBasePerspective,
+		PerspectiveAPIKey: perspectiveApiKey,
+		PerspectiveUrl:    urlBasePerspective,
 	}
 }
 

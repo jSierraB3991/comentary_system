@@ -9,6 +9,8 @@ import (
 type Enviroment struct {
 	PerspectiveAPIKey  string
 	UrlBasePerspective string
+
+	MongoDbUri string
 }
 
 func NewEnviroment() *Enviroment {
@@ -21,9 +23,14 @@ func NewEnviroment() *Enviroment {
 	if err != nil {
 		log.Fatal(err)
 	}
+	mongoDbUri, err := jsierralibs.GetDataOfEnviromentRequired("MONGO_URI")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return &Enviroment{
 		PerspectiveAPIKey:  perspectiveAPIKey,
 		UrlBasePerspective: perspectiveUrl,
+		MongoDbUri:         mongoDbUri,
 	}
 }
