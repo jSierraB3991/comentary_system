@@ -23,7 +23,7 @@ func NewEnviroment() *Enviroment {
 	if err != nil {
 		log.Fatal(err)
 	}
-	mongoDbUri, err := jsierralibs.GetDataOfEnviromentRequired("MONGO_URI")
+	mongoDbUri, err := jsierralibs.GetDataOfEnviromentRequired("MONGO_DB_URI")
 	if err != nil {
 		log.Fatal(err)
 	}

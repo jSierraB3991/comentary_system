@@ -13,3 +13,7 @@ func InitiateRepo(collection *mongo.Client) *Repository {
 		collection: collection,
 	}
 }
+
+func (r *Repository) GetComentaryCollection() *mongo.Collection {
+	return r.collection.Database("comentary").Collection("comentary")
+}
