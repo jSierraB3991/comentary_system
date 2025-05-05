@@ -22,17 +22,17 @@ func NewPerspectiveService(perspectiveApiKey, urlBasePerspective string) *Perspe
 	}
 }
 
-func (s *PerspectiveService) AnalyzeText(textToAnalyze string) (*string, *bool, error) {
+func (s *PerspectiveService) AnalyzeText(textToAnalyze string) (*bool, error) {
 	body, err := getBody(textToAnalyze)
 	if err != nil {
 		fmt.Println("Error to get body:", err)
-		return nil, nil, err
+		return nil, err
 	}
 	var result comentaryresponse.PerspectiveResponse
 	err = jsierralibs.Post(s.PerspectiveUrl, "?key="+s.PerspectiveAPIKey, body, &result, nil)
 	if err != nil {
 		fmt.Println("Error in POST request:", err)
-		return nil, nil, err
+		return nil, err
 	}
 	score := result.AttributeScores.Toxicity.SummaryScore.Value
 
@@ -41,7 +41,7 @@ func (s *PerspectiveService) AnalyzeText(textToAnalyze string) (*string, *bool, 
 		isToxic = true
 	}
 
-	return &textToAnalyze, &isToxic, nil
+	return &isToxic, nil
 }
 
 func getBody(textToAnalyze string) ([]byte, error) {

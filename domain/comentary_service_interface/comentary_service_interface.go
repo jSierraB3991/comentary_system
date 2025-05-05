@@ -1,4 +1,4 @@
-package comentaryrepositoryinterface
+package comentaryserviceinterface
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	comentarymodels "github.com/jSierraB3991/comentary_system/domain/comentary_models"
 )
 
-type MongoDbRepositoryInterface interface {
-	SaveComentary(ctx context.Context, comentary comentarymodels.ComentarySystemComentaryModel, comentaryUpId string) error
+type ComentarySystemServiceInterface interface {
+	SaveComentary(ctx context.Context, comentary, commentUpId string, idPost, idUserComment uint) error
 	GetComentarysByUser(ctx context.Context, userId uint) ([]comentarymodels.ComentarySystemComentaryModel, error)
 }
